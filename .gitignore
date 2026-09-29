@@ -1,3 +1,12 @@
+# Assignment & Lab files (kept locally only)
+CareerPilot_AI_Assignment_*
+CareerPilot_AI_Gantt_*
+CareerPilot_AI_Risk_*
+CareerPilot_AI_Visual_*
+CareerPilot_AI_WBS_*
+generate_excel_openpyxl.py
+split_milestone.ps1
+
 # Dependencies
 node_modules/
 

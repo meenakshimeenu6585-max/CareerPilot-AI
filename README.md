@@ -122,18 +122,6 @@ CareerPilot AI/
 ├── assets/                                     # Static vector images and illustrations
 │   ├── student-laptop.png
 │   └── students-group.png
-├── CareerPilot_AI_Assignment_Experiment_03.md  # Software Project Management laboratory record
-├── CareerPilot_AI_Assignment_Experiment_03.doc # Formatted project documentation
-├── CareerPilot_AI_Assignment_Experiment_03.html# HTML report of SPM Experiment 03
-├── CareerPilot_AI_Assignment_Experiment_03.rtf # RTF export of project documentation
-├── CareerPilot_AI_Visual_References.html       # Visual design and screen references
-├── CareerPilot_AI_WBS.csv                      # Work Breakdown Structure (WBS) data
-├── CareerPilot_AI_Gantt_Chart.csv              # Gantt chart scheduling data
-├── CareerPilot_AI_WBS_and_Gantt_Chart.xls      # SPM WBS & Gantt chart spreadsheet
-├── CareerPilot_AI_Risk_Register.csv            # Project risk assessment matrix
-├── CareerPilot_AI_Risk_Register.xls            # Qualitative Risk Register workbook
-├── generate_excel_openpyxl.py                  # OpenPyXL automation script for SPM artifacts
-└── split_milestone.ps1                         # PowerShell utility script
 ```
 
 ---
