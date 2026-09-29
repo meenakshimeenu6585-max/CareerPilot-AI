@@ -1409,9 +1409,9 @@
                 </div>
               </div>
 
-              <!-- Sequential Checkpoints Timeline -->
+              <!-- Assessment Checkpoints Timeline -->
               <div class="dash-grid-card" style="padding:28px; margin-top:24px;">
-                <h5 style="margin-bottom:20px;">Sequential Assessment Checkpoints</h5>
+                <h5 style="margin-bottom:20px;">Assessment Center Checkpoints</h5>
 
                 <div class="checkpoint-timeline"
                   style="display:flex; flex-direction:column; gap:24px; position:relative;">
@@ -1425,59 +1425,55 @@
                     <div style="flex:1;">
                       <div
                         style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">Checkpoint 1: General
-                          Aptitude Assessment</h6>
+                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">General Aptitude Assessment</h6>
                         <span class="badge-tag-new" id="status-chk-1"
                           style="background:var(--success-light); color:var(--success);">Available</span>
                       </div>
                       <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Tests mathematical logic,
-                        quantitative reasoning and reading comprehension. (Prerequisite for programming tests).</p>
+                        quantitative reasoning and reading comprehension. Independent assessment with no prerequisite dependencies.</p>
                       <button class="btn-get-started btn-start-quiz-trigger" data-checkpoint="1"
                         style="padding:6px 12px; font-size:0.75rem; margin-top:10px;">Start Aptitude Test</button>
                     </div>
                   </div>
 
                   <!-- Checkpoint 2 -->
-                  <div class="checkpoint-node locked" id="node-chk-2"
+                  <div class="checkpoint-node unlocked" id="node-chk-2"
                     style="display:flex; gap:20px; align-items:start;">
                     <div class="node-indicator"
-                      style="width:36px; height:36px; border-radius:50%; border:3px solid var(--border); display:flex; align-items:center; justify-content:center; background:#FFF; font-weight:700; color:var(--text-light); flex-shrink:0;">
+                      style="width:36px; height:36px; border-radius:50%; border:3px solid var(--primary); display:flex; align-items:center; justify-content:center; background:#FFF; font-weight:700; color:var(--primary); flex-shrink:0;">
                       2</div>
                     <div style="flex:1;">
                       <div
                         style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">Checkpoint 2:
-                          Programming Fundamentals (JavaScript/Python)</h6>
+                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">Programming Assessment (JavaScript/Python)</h6>
                         <span class="badge-tag-new" id="status-chk-2"
-                          style="background:#E2E8F0; color:var(--text-muted);">🔒 Locked</span>
+                          style="background:var(--primary-light); color:var(--primary);">Available • Integrity Checkpoint</span>
                       </div>
-                      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Covers language syntax,
-                        functions, object-oriented concepts and algorithms. Requires Checkpoint 1 completion.</p>
-                      <button class="btn-login btn-start-quiz-trigger" data-checkpoint="2"
-                        style="padding:6px 12px; font-size:0.75rem; margin-top:10px;" disabled>Start Programming
+                      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Coding tasks focusing on
+                        functions, variables, logic, and algorithms. Protected with anti-copy-paste malpractice prevention and telemetry integrity.</p>
+                      <button class="btn-get-started btn-start-quiz-trigger" data-checkpoint="2"
+                        style="padding:6px 12px; font-size:0.75rem; margin-top:10px;">Start Programming
                         Test</button>
                     </div>
                   </div>
 
                   <!-- Checkpoint 3 -->
-                  <div class="checkpoint-node locked" id="node-chk-3"
+                  <div class="checkpoint-node unlocked" id="node-chk-3"
                     style="display:flex; gap:20px; align-items:start;">
                     <div class="node-indicator"
-                      style="width:36px; height:36px; border-radius:50%; border:3px solid var(--border); display:flex; align-items:center; justify-content:center; background:#FFF; font-weight:700; color:var(--text-light); flex-shrink:0;">
+                      style="width:36px; height:36px; border-radius:50%; border:3px solid var(--purple); display:flex; align-items:center; justify-content:center; background:#FFF; font-weight:700; color:var(--purple); flex-shrink:0;">
                       3</div>
                     <div style="flex:1;">
                       <div
                         style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">Checkpoint 3: Domain
-                          Specialist Assessment (React/SQL)</h6>
+                        <h6 style="font-size:0.95rem; font-weight:700; color:var(--text-main);">Domain Specialist Assessment (React/SQL)</h6>
                         <span class="badge-tag-new" id="status-chk-3"
-                          style="background:#E2E8F0; color:var(--text-muted);">🔒 Locked</span>
+                          style="background:var(--purple-light); color:var(--purple);">Available</span>
                       </div>
                       <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Advanced engineering check
-                        focusing on component architectures, database normalization, and query performance. Requires
-                        Checkpoint 2 completion.</p>
-                      <button class="btn-login btn-start-quiz-trigger" data-checkpoint="3"
-                        style="padding:6px 12px; font-size:0.75rem; margin-top:10px;" disabled>Start Domain
+                        focusing on component architectures, database normalization, and query performance. Independent assessment with no prerequisite dependencies.</p>
+                      <button class="btn-get-started btn-start-quiz-trigger" data-checkpoint="3"
+                        style="padding:6px 12px; font-size:0.75rem; margin-top:10px;">Start Domain
                         Test</button>
                     </div>
                   </div>
@@ -1496,7 +1492,7 @@
                       <h4 id="quiz-display-title"
                         style="font-family:'Poppins', sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main);">
                         Aptitude Assessment</h4>
-                      <span
+                      <span id="quiz-telemetry-badge"
                         style="font-size:0.7rem; color:var(--danger); font-weight:700; background:var(--danger-light); padding:2px 6px; border-radius:4px; margin-top:4px; display:inline-block;">🔒
                         TELEMETRY MONITORING ACTIVE</span>
                     </div>
@@ -1563,7 +1559,7 @@
                   </div>
 
                   <!-- Telemetry Integrity Submission Log -->
-                  <div
+                  <div id="telemetry-integrity-container"
                     style="border:1px solid #FEE2E2; background:#FFF5F5; padding:12px; border-radius:var(--radius-sm); margin-bottom:20px; font-size:0.75rem; color:#991B1B;">
                     <h6
                       style="font-weight:700; margin-bottom:6px; color:#990000; text-transform:uppercase; letter-spacing:0.5px;">

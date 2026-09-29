@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 03 – WBS, Gantt Chart & Risk Register | CareerPilot AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --success-bg: #dcfce7;
+      --success-text: #166534;
+      --warn-bg: #fef3c7;
+      --warn-text: #92400e;
+      --danger-bg: #fee2e2;
+      --danger-text: #991b1b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: #f1f5f9;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .document-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 60px 70px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Header Block */
+    .lab-header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .institution-name {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .doc-meta-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 15px;
+      background: var(--bg-light);
+      padding: 16px 20px;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .meta-col p {
+      font-size: 13.5px;
+      margin-bottom: 4px;
+    }
+
+    .meta-col p strong {
+      color: var(--primary);
+    }
+
+    h1.experiment-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 15px 0 10px 0;
+      line-height: 1.3;
+    }
+
+    h2.section-heading {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      border-bottom: 1.5px solid var(--border-color);
+      padding-bottom: 8px;
+      margin: 35px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2.section-heading::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    h3.sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary-light);
+      margin: 20px 0 10px 0;
+    }
+
+    p, li {
+      font-size: 13.5px;
+      color: #334155;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 18px 0 25px 0;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      background: #ffffff;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 10px 12px;
+      text-align: left;
+      border: 1px solid #334155;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 9px 12px;
+      border: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    tr.phase-row td {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: var(--primary);
+      border-top: 1.5px solid #94a3b8;
+      border-bottom: 1.5px solid #94a3b8;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .badge-completed { background: var(--success-bg); color: var(--success-text); }
+    .badge-progress { background: var(--accent-light); color: var(--accent); }
+    .badge-planned { background: #f1f5f9; color: var(--text-muted); }
+
+    .badge-critical { background: var(--danger-bg); color: var(--danger-text); }
+    .badge-high { background: #ffe4e6; color: #be123c; }
+    .badge-medium { background: var(--warn-bg); color: var(--warn-text); }
+    .badge-low { background: var(--success-bg); color: var(--success-text); }
+
+    /* Gantt Visual Cells */
+    .gantt-cell {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 2px;
+      min-width: 32px;
+    }
+    .gantt-done { background: #10b981; color: #ffffff; }
+    .gantt-prog { background: #2563eb; color: #ffffff; }
+    .gantt-plan { background: #94a3b8; color: #ffffff; }
+
+    /* Code & Formula callout */
+    .formula-box {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    .formula-box span.comment { color: #94a3b8; }
+    .formula-box span.keyword { color: #38bdf8; font-weight: 600; }
+
+    /* Sign-off footer */
+    .signoff-section {
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 2px dashed var(--border-color);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .sign-box {
+      width: 45%;
+      border-top: 1px solid var(--text-muted);
+      padding-top: 8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .document-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="document-container">
+
+  <!-- LAB ASSIGNMENT HEADER -->
+  <header class="lab-header">
+    <div class="institution-name">Department of Computer Science & Engineering | Software Engineering Lab</div>
+    <h1 class="experiment-title">Experiment No. 03: Work Breakdown Structure (WBS), Gantt Chart Scheduling & Project Risk Register</h1>
+    
+    <div class="doc-meta-grid">
+      <div class="meta-col">
+        <p><strong>Course / Subject:</strong> Software Project Management Lab (SPM)</p>
+        <p><strong>Experiment Date:</strong> 01/08/2026</p>
+        <p><strong>Submission Date:</strong> 16/09/2026</p>
+      </div>
+      <div class="meta-col">
+        <p><strong>Project Name:</strong> CareerPilot AI – Placement Intelligence & Readiness</p>
+        <p><strong>Team Members:</strong></p>
+        <p style="padding-left: 8px;">1. Abel Mathew Bose<br>2. K.M. Meenakshi<br>3. Sen Shaji<br>4. Sidharth K.A</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- AIM -->
+  <h2 class="section-heading">1. Aim of the Experiment</h2>
+  <p>
+    To design and formulate a comprehensive <strong>Work Breakdown Structure (WBS)</strong>, construct an interactive <strong>Gantt Chart</strong> schedule to illustrate project timeline tracking, and prepare a <strong>Risk Register</strong> identifying five major operational/technical risks with probability-impact scoring and mitigation strategies using Microsoft Excel for the <em>CareerPilot AI</em> placement platform.
+  </p>
+
+  <!-- THEORY & PRINCIPLES -->
+  <h2 class="section-heading">2. Theoretical Framework & Principles</h2>
+  <p>
+    Proper project planning ensures deterministic milestone completion, optimal human resource utilization, and proactive risk mitigation. This experiment implements three core Project Management Body of Knowledge (PMBOK) pillars:
+  </p>
+  <ul>
+    <li><strong>Work Breakdown Structure (WBS):</strong> A deliverable-oriented hierarchical decomposition of the total project scope. It adheres to the <em>100% Rule</em>, ensuring all terminal work packages collectively encompass the full project boundary without overlap or omission.</li>
+    <li><strong>Gantt Chart Scheduling:</strong> A graphical horizontal bar chart mapping scheduled tasks against discrete calendar timelines (16 weekly intervals), illustrating concurrency, start-to-finish milestones, and task statuses.</li>
+    <li><strong>Risk Management & Qualitative Scoring:</strong> Identification of potential failure modes and assessment via the standard risk exposure formula:
+      <div class="formula-box">
+        <span class="keyword">Risk Score</span> = Probability (1 – 5) &times; Impact (1 – 5)
+      </div>
+      Risk scores range from 1 to 25, categorizing events into <em>Critical (16–25)</em>, <em>High (10–15)</em>, <em>Medium (5–9)</em>, and <em>Low (1–4)</em>.
+    </li>
+  </ul>
+
+  <!-- STEP-BY-STEP PROCEDURE -->
+  <h2 class="section-heading">3. Step-by-Step Procedure & Excel Implementation</h2>
+  <ol>
+    <li><strong>Workbook Setup:</strong> Initiated Microsoft Excel and created structured spreadsheets for WBS Task Decomposition and Risk Register.</li>
+    <li><strong>Header Schema:</strong> Configured mandatory columns: <code>WBS ID</code>, <code>Phase</code>, <code>Module</code>, <code>Work Package</code>, <code>Description</code>, <code>Owner</code>, <code>Start Date</code>, <code>End Date</code>, <code>Duration (Days)</code>, <code>Status</code>, and <code>Progress</code>.</li>
+    <li><strong>Phase Decomposition:</strong> Divided the software lifecycle into 6 distinct phases: Initiation, UI/UX Design, Student Platform Core, AI Opportunity Radar, Skills Trust Engine, and Testing/Deployment.</li>
+    <li><strong>Task & Ownership Allocation:</strong> Decomposed phases into 15 discrete work packages and assigned primary ownership across the four group members: Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, and Sidharth K.A.</li>
+    <li><strong>Duration & Timeline Formulas:</strong> Applied dynamic date calculations for project task duration:
+      <div class="formula-box">
+        <span class="comment"># Excel Duration Formula (Row 6):</span><br>
+        =INT(End_Date - Start_Date + 1)  &rarr;  <span class="keyword">=H6 - G6 + 1</span>
+      </div>
+    </li>
+    <li><strong>Gantt Timeline Construction:</strong> Built a 16-week matrix (W1 to W16) spanning August 1, 2026 to November 21, 2026. Mapped cell ranges to visualize task execution intervals with color-coded status conditional formatting: Completed (<span style="color:#166534; font-weight:600;">Green</span>), In Progress (<span style="color:#0369a1; font-weight:600;">Blue</span>), and Planned (<span style="color:#475569; font-weight:600;">Gray</span>).</li>
+    <li><strong>Risk Register Formulation:</strong> Populated 5 critical platform risks, calculating risk severity using:
+      <div class="formula-box">
+        <span class="comment"># Risk Score Calculation (Row 6):</span><br>
+        =Probability * Impact  &rarr;  <span class="keyword">=E6 * F6</span><br><br>
+        <span class="comment"># Dynamic Severity Level Logic:</span><br>
+        <span class="keyword">=IF(G6>=16, "Critical", IF(G6>=10, "High", IF(G6>=5, "Medium", "Low")))</span>
+      </div>
+    </li>
+  </ol>
+
+  <!-- WBS TABLE -->
+  <div class="page-break"></div>
+  <h2 class="section-heading">4. Work Breakdown Structure (WBS)</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>WBS ID</th>
+          <th>Phase</th>
+          <th>Module</th>
+          <th>Work Package</th>
+          <th>Description</th>
+          <th>Owner</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Days</th>
+          <th>Status</th>
+          <th>Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Phase 1 -->
+        <tr class="phase-row">
+          <td>1.0</td>
+          <td colspan="10">Phase 1: Project Initiation & Requirements Engineering</td>
+        </tr>
+        <tr>
+          <td>1.1</td>
+          <td>Initiation</td>
+          <td>Architecture & Scope</td>
+          <td>Project Scope & Tech Architecture</td>
+          <td>Define functional specs, AI pipeline architecture, and placement intelligence scope.</td>
+          <td>Abel Mathew Bose</td>
+          <td>2026-08-01</td>
+          <td>2026-08-07</td>
+          <td>7</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>1.2</td>
+          <td>Initiation</td>
+          <td>User Journeys</td>
+          <td>Persona & Journey Mapping</td>
+          <td>Map student readiness tracks and recruiter shortlisting workflow workflows.</td>
+          <td>K.M. Meenakshi</td>
+          <td>2026-08-05</td>
+          <td>2026-08-11</td>
+          <td>7</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>1.3</td>
+          <td>Initiation</td>
+          <td>Environment Setup</td>
+          <td>Dev Environment & Version Control</td>
+          <td>Configure Git repositories, branches, CI automation, and code standards.</td>
+          <td>Sen Shaji</td>
+          <td>2026-08-08</td>
+          <td>2026-08-14</td>
+          <td>7</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+
+        <!-- Phase 2 -->
+        <tr class="phase-row">
+          <td>2.0</td>
+          <td colspan="10">Phase 2: UI/UX Design & Frontend Foundation</td>
+        </tr>
+        <tr>
+          <td>2.1</td>
+          <td>UI/UX Design</td>
+          <td>Design System</td>
+          <td>Design Tokens & Responsive Layout</td>
+          <td>Create CSS design tokens, modern typography, glassmorphism cards, and dark theme.</td>
+          <td>K.M. Meenakshi</td>
+          <td>2026-08-15</td>
+          <td>2026-08-22</td>
+          <td>8</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>2.2</td>
+          <td>UI/UX Design</td>
+          <td>Landing & Splash</td>
+          <td>Splash Loader & Landing Showcase</td>
+          <td>Build animated paper-plane splash screen, hero section, metrics and feature showcase.</td>
+          <td>K.M. Meenakshi</td>
+          <td>2026-08-20</td>
+          <td>2026-08-28</td>
+          <td>9</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>2.3</td>
+          <td>UI/UX Design</td>
+          <td>Auth & Access</td>
+          <td>Dual-Persona Authentication Module</td>
+          <td>Implement Student/Recruiter login, registration validation, and password eye toggles.</td>
+          <td>Sidharth K.A</td>
+          <td>2026-08-26</td>
+          <td>2026-09-04</td>
+          <td>10</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+
+        <!-- Phase 3 -->
+        <tr class="phase-row">
+          <td>3.0</td>
+          <td colspan="10">Phase 3: Student Dashboard & Application Tracking</td>
+        </tr>
+        <tr>
+          <td>3.1</td>
+          <td>Dashboard</td>
+          <td>KPI Analytics</td>
+          <td>KPI Metrics & Readiness Gauge</td>
+          <td>Interactive stat cards, circular readiness gauge SVG, checklist, and donut breakdown.</td>
+          <td>K.M. Meenakshi</td>
+          <td>2026-09-05</td>
+          <td>2026-09-14</td>
+          <td>10</td>
+          <td><span class="badge badge-completed">Completed</span></td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>3.2</td>
+          <td>Dashboard</td>
+          <td>Inactivity Guardian</td>
+          <td>Idle Countdown & Alert Engine</td>
+          <td>Track user activity, trigger inactivity warning banners, and handle auto-pause of AI matching.</td>
+          <td>Sen Shaji</td>
+          <td>2026-09-10</td>
+          <td>2026-09-19</td>
+          <td>10</td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td>90%</td>
+        </tr>
+        <tr>
+          <td>3.3</td>
+          <td>Dashboard</td>
+          <td>Application Tracker</td>
+          <td>Job Pipeline & Status Workflow</td>
+          <td>Multi-stage pipeline tracking (Bookmarked, Applied, Interviewing, Offer) with deadlines.</td>
+          <td>Abel Mathew Bose</td>
+          <td>2026-09-15</td>
+          <td>2026-09-25</td>
+          <td>11</td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td>75%</td>
+        </tr>
+
+        <!-- Phase 4 -->
+        <tr class="phase-row">
+          <td>4.0</td>
+          <td colspan="10">Phase 4: AI Opportunity Radar & Matching Engine</td>
+        </tr>
+        <tr>
+          <td>4.1</td>
+          <td>AI Matching</td>
+          <td>Opportunity DB</td>
+          <td>Job Profiles & Skill Vectors Schema</td>
+          <td>Build normalized job profiles, required skill sets, salary ranges, and domain taxonomy.</td>
+          <td>Sen Shaji</td>
+          <td>2026-09-26</td>
+          <td>2026-10-04</td>
+          <td>9</td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td>4.2</td>
+          <td>AI Matching</td>
+          <td>Cosine Engine</td>
+          <td>Cosine Similarity Match Computation</td>
+          <td>Formulate weighted vector matching between student verified skills and job requirements.</td>
+          <td>Abel Mathew Bose</td>
+          <td>2026-10-02</td>
+          <td>2026-10-10</td>
+          <td>9</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>4.3</td>
+          <td>AI Matching</td>
+          <td>Radar Visualizer</td>
+          <td>Radar Visualizer & Match Drawer</td>
+          <td>Animated radar sweep graphic, filter controls (domain, remote, min match), and breakdown drawer.</td>
+          <td>Abel Mathew Bose</td>
+          <td>2026-10-08</td>
+          <td>2026-10-16</td>
+          <td>9</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+
+        <!-- Phase 5 -->
+        <tr class="phase-row">
+          <td>5.0</td>
+          <td colspan="10">Phase 5: Skills Trust Engine & Assessment Pipeline</td>
+        </tr>
+        <tr>
+          <td>5.1</td>
+          <td>Trust Engine</td>
+          <td>Skill Builder</td>
+          <td>Skill Evidence Validation Engine</td>
+          <td>Evidence submission interface (GitHub repos, certificate links) and verification engine.</td>
+          <td>Sidharth K.A</td>
+          <td>2026-10-17</td>
+          <td>2026-10-25</td>
+          <td>9</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>5.2</td>
+          <td>Trust Engine</td>
+          <td>Missing Evidence</td>
+          <td>Skill Gap Analysis & Alert Widget</td>
+          <td>Detect unverified skills, prompt students with missing proof alerts, and calculate Trust Index.</td>
+          <td>Sidharth K.A</td>
+          <td>2026-10-22</td>
+          <td>2026-10-30</td>
+          <td>9</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>5.3</td>
+          <td>Assessments</td>
+          <td>Timed Quizzes</td>
+          <td>Sequential Assessment & Testing</td>
+          <td>Interactive multi-question assessment modal, live countdown timers, and immediate scoring.</td>
+          <td>Sen Shaji</td>
+          <td>2026-10-28</td>
+          <td>2026-11-06</td>
+          <td>10</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+
+        <!-- Phase 6 -->
+        <tr class="phase-row">
+          <td>6.0</td>
+          <td colspan="10">Phase 6: Integration, Testing & Final Deployment</td>
+        </tr>
+        <tr>
+          <td>6.1</td>
+          <td>QA & Testing</td>
+          <td>E2E Testing</td>
+          <td>System Validation & Edge Cases</td>
+          <td>Validate user flows, local storage persistence, responsive views, and algorithm accuracy.</td>
+          <td>Sidharth K.A</td>
+          <td>2026-11-07</td>
+          <td>2026-11-13</td>
+          <td>7</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>6.2</td>
+          <td>Optimization</td>
+          <td>Performance</td>
+          <td>Mobile Tuning & Asset Optimization</td>
+          <td>Fine-tune responsive CSS breakpoints, lazy image rendering, and smooth animations.</td>
+          <td>K.M. Meenakshi</td>
+          <td>2026-11-11</td>
+          <td>2026-11-17</td>
+          <td>7</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>6.3</td>
+          <td>Release</td>
+          <td>Project Review</td>
+          <td>Production Deployment & Deliverables</td>
+          <td>Publish platform build, compile project documentation, Gantt review, and presentation.</td>
+          <td>Abel Mathew Bose</td>
+          <td>2026-11-15</td>
+          <td>2026-11-21</td>
+          <td>7</td>
+          <td><span class="badge badge-planned">Planned</span></td>
+          <td>0%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GANTT CHART -->
+  <div class="page-break"></div>
+  <h2 class="section-heading">5. 16-Week Project Schedule Gantt Chart</h2>
+  <p style="margin-bottom: 12px;">Timeline spanning 16 weeks from <strong>August 1, 2026 to November 21, 2026</strong>. Visual markers indicate milestone completion and work progress.</p>
+  
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">ID</th>
+          <th rowspan="2">Work Package</th>
+          <th rowspan="2">Owner</th>
+          <th rowspan="2">Days</th>
+          <th rowspan="2">Status</th>
+          <th colspan="4" style="text-align:center;">Aug 2026</th>
+          <th colspan="4" style="text-align:center;">Sep 2026</th>
+          <th colspan="4" style="text-align:center;">Oct 2026</th>
+          <th colspan="4" style="text-align:center;">Nov 2026</th>
+        </tr>
+        <tr>
+          <th class="gantt-cell">W1</th><th class="gantt-cell">W2</th><th class="gantt-cell">W3</th><th class="gantt-cell">W4</th>
+          <th class="gantt-cell">W5</th><th class="gantt-cell">W6</th><th class="gantt-cell">W7</th><th class="gantt-cell">W8</th>
+          <th class="gantt-cell">W9</th><th class="gantt-cell">W10</th><th class="gantt-cell">W11</th><th class="gantt-cell">W12</th>
+          <th class="gantt-cell">W13</th><th class="gantt-cell">W14</th><th class="gantt-cell">W15</th><th class="gantt-cell">W16</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.1</td><td>Project Scope & Architecture</td><td>Abel</td><td>7</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>1.2</td><td>Persona & Journey Mapping</td><td>Meenakshi</td><td>7</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>1.3</td><td>Dev Environment & Git Setup</td><td>Sen</td><td>7</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td></td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>2.1</td><td>Design Tokens & Layout</td><td>Meenakshi</td><td>8</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td></td><td></td><td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>2.2</td><td>Splash Loader & Landing</td><td>Meenakshi</td><td>9</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td></td><td></td><td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>2.3</td><td>Dual-Persona Auth Module</td><td>Sidharth</td><td>10</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td></td><td></td><td></td><td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>3.1</td><td>KPI Metrics & Readiness Gauge</td><td>Meenakshi</td><td>10</td>
+          <td><span class="badge badge-completed">Done</span></td>
+          <td></td><td></td><td></td><td></td><td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">■</td><td class="gantt-cell gantt-done">100%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>3.2</td><td>Idle Alert Countdown Engine</td><td>Sen</td><td>10</td>
+          <td><span class="badge badge-progress">Prog</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-prog">■</td><td class="gantt-cell gantt-prog">90%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>3.3</td><td>Job Pipeline Workflow</td><td>Abel</td><td>11</td>
+          <td><span class="badge badge-progress">Prog</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-prog">■</td><td class="gantt-cell gantt-prog">75%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>4.1</td><td>Opportunity DB Schema</td><td>Sen</td><td>9</td>
+          <td><span class="badge badge-progress">Prog</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-prog">■</td><td class="gantt-cell gantt-prog">50%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>4.2</td><td>Cosine Matching Math</td><td>Abel</td><td>9</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>4.3</td><td>Radar Visualizer UI</td><td>Abel</td><td>9</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>5.1</td><td>Skill Evidence Validation</td><td>Sidharth</td><td>9</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>5.2</td><td>Missing Evidence Widget</td><td>Sidharth</td><td>9</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>5.3</td><td>Sequential Assessment Quizzes</td><td>Sen</td><td>10</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>6.1</td><td>System Validation & Testing</td><td>Sidharth</td><td>7</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td></td>
+        </tr>
+        <tr>
+          <td>6.2</td><td>Mobile Tuning & Assets</td><td>Meenakshi</td><td>7</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td><td class="gantt-cell gantt-plan">■</td>
+        </tr>
+        <tr>
+          <td>6.3</td><td>Production Deployment & Docs</td><td>Abel</td><td>7</td>
+          <td><span class="badge badge-planned">Plan</span></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="gantt-cell gantt-plan">■</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RISK REGISTER -->
+  <div class="page-break"></div>
+  <h2 class="section-heading">6. Project Risk Register & Mitigation Strategy</h2>
+  <p style="margin-bottom: 14px;">
+    Identification and mitigation plan for five major project risks. Risk score is computed as <strong>Probability (1–5) &times; Impact (1–5)</strong>.
+  </p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Category</th>
+          <th>Risk Event / Description</th>
+          <th>Impact Area</th>
+          <th>P</th>
+          <th>I</th>
+          <th>Score</th>
+          <th>Level</th>
+          <th>Mitigation Plan (Preventative)</th>
+          <th>Contingency Plan (Reactive)</th>
+          <th>Owner</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>R-01</strong></td>
+          <td>Technical / AI Engine</td>
+          <td><strong>Cold-Start & Inaccurate Match:</strong> Candidates with sparse initial skill entries receive zero or irrelevant recommendations from the cosine radar engine.</td>
+          <td>Matching Accuracy & Student Trust</td>
+          <td style="text-align:center; font-weight:700;">4</td>
+          <td style="text-align:center; font-weight:700;">4</td>
+          <td style="text-align:center; font-weight:700;">16</td>
+          <td><span class="badge badge-critical">Critical (16)</span></td>
+          <td>Enforce onboarding requirement of at least 3 verified baseline skills; implement hybrid keyword/cosine matching fallbacks.</td>
+          <td>Fallback to domain-based broad recommendations and highlight missing evidence badges.</td>
+          <td>Abel Mathew Bose</td>
+          <td><span class="badge badge-progress">In Mitigation</span></td>
+        </tr>
+        <tr>
+          <td><strong>R-02</strong></td>
+          <td>Data Integrity & Trust</td>
+          <td><strong>Profile Evidence Fabrication:</strong> Candidates submit non-functional GitHub repositories, broken certificate URLs, or duplicate project proofs to inflate Trust Score.</td>
+          <td>Trust Index & Recruiter Confidence</td>
+          <td style="text-align:center; font-weight:700;">3</td>
+          <td style="text-align:center; font-weight:700;">5</td>
+          <td style="text-align:center; font-weight:700;">15</td>
+          <td><span class="badge badge-high">High (15)</span></td>
+          <td>Automated repo regex checks, certificate domain whitelisting, and mandatory checkpoint testing before awarding Verified badges.</td>
+          <td>Flag suspicious evidence with 'Missing Proof' badges; restrict recruiter pipeline visibility to only authenticated credentials.</td>
+          <td>Sidharth K.A</td>
+          <td><span class="badge badge-planned">Monitored</span></td>
+        </tr>
+        <tr>
+          <td><strong>R-03</strong></td>
+          <td>Performance & Scalability</td>
+          <td><strong>Client-Side Latency & UI Freezing:</strong> Heavy vector computations and animated radar sweeps cause browser lag and timer delays on mobile devices.</td>
+          <td>Assessment Flow & User Experience</td>
+          <td style="text-align:center; font-weight:700;">3</td>
+          <td style="text-align:center; font-weight:700;">3</td>
+          <td style="text-align:center; font-weight:700;">9</td>
+          <td><span class="badge badge-medium">Medium (9)</span></td>
+          <td>Debounce radar filter triggers; optimize DOM manipulation; offload vector math into lightweight asynchronous routines; cache precomputed opportunity scores.</td>
+          <td>Disable radar sweep animations automatically on low-spec client devices; paginate opportunities list into chunks of 10 items.</td>
+          <td>Sen Shaji</td>
+          <td><span class="badge badge-completed">Mitigated</span></td>
+        </tr>
+        <tr>
+          <td><strong>R-04</strong></td>
+          <td>Schedule & Milestones</td>
+          <td><strong>Scope Creep Across Dual Portals:</strong> Simultaneous feature expansion across Student Readiness dashboards and Recruiter Shortlisting leads to milestone slippage.</td>
+          <td>Project Deadlines & Deliverables</td>
+          <td style="text-align:center; font-weight:700;">4</td>
+          <td style="text-align:center; font-weight:700;">3</td>
+          <td style="text-align:center; font-weight:700;">12</td>
+          <td><span class="badge badge-high">High (12)</span></td>
+          <td>Establish strict milestone boundaries (Phase 1-3 Student Core focus, Phase 4-5 Matching & Trust); isolate recruiter workflows into secondary sprint cycles.</td>
+          <td>Freeze new non-essential UI features; shift team pairing to unblock critical path assessment and opportunity radar tasks.</td>
+          <td>K.M. Meenakshi</td>
+          <td><span class="badge badge-planned">Monitored</span></td>
+        </tr>
+        <tr>
+          <td><strong>R-05</strong></td>
+          <td>User Engagement & Retention</td>
+          <td><strong>Assessment Test Fatigue:</strong> Candidates drop off mid-way through rigorous multi-question timed aptitude assessments, leaving readiness profiles incomplete.</td>
+          <td>Placement Conversion & Adoption</td>
+          <td style="text-align:center; font-weight:700;">3</td>
+          <td style="text-align:center; font-weight:700;">4</td>
+          <td style="text-align:center; font-weight:700;">12</td>
+          <td><span class="badge badge-high">High (12)</span></td>
+          <td>Structure assessments into bite-sized 5-question micro-checkpoints; implement real-time progress bars, motivational streak counters, and instant readiness unlocks.</td>
+          <td>Save quiz progress automatically in localStorage; dispatch non-intrusive reminder alerts guiding users to resume incomplete checkpoints.</td>
+          <td>K.M. Meenakshi</td>
+          <td><span class="badge badge-progress">In Mitigation</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RISK MATRIX CRITERIA -->
+  <h3 class="sub-heading">Qualitative 5 &times; 5 Risk Assessment Matrix</h3>
+  <div class="table-wrapper" style="max-width: 750px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Score (P &times; I)</th>
+          <th>Severity</th>
+          <th>Governance Action Required</th>
+          <th>Identified Platform Risks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>16 – 25</strong></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td>Immediate intervention required; continuous active mitigation and daily review.</td>
+          <td><strong>R-01</strong> (Score: 16)</td>
+        </tr>
+        <tr>
+          <td><strong>10 – 15</strong></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td>Aggressive mitigation plan required; weekly sprint tracking and dedicated owner.</td>
+          <td><strong>R-02</strong> (15), <strong>R-04</strong> (12), <strong>R-05</strong> (12)</td>
+        </tr>
+        <tr>
+          <td><strong>5 – 9</strong></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td>Proactive monitoring and routine controls; evaluate during bi-weekly reviews.</td>
+          <td><strong>R-03</strong> (Score: 9)</td>
+        </tr>
+        <tr>
+          <td><strong>1 – 4</strong></td>
+          <td><span class="badge badge-low">Low</span></td>
+          <td>Within acceptable operational tolerance; periodic reassessment as necessary.</td>
+          <td>None above threshold</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONCLUSION -->
+  <h2 class="section-heading">7. Result & Conclusion</h2>
+  <p>
+    The Work Breakdown Structure, Gantt Chart timeline, and Risk Register for <strong>CareerPilot AI</strong> were successfully developed and validated using Microsoft Excel:
+  </p>
+  <ul>
+    <li>The scope was systematically decomposed into 6 phases and 15 manageable work packages with balanced workload distribution among Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, and Sidharth K.A.</li>
+    <li>A 16-week Gantt schedule (August 1, 2026 to November 21, 2026) was established with clear dependency sequences between foundation, AI matching, skill trust verification, and deployment.</li>
+    <li>Five critical platform risks were systematically analyzed and quantified using the $P \times I$ formula, establishing proactive preventative controls and contingency fallback plans.</li>
+    <li>All deliverables were exported into independent Excel workbooks (<code>CareerPilot_AI_WBS_and_Gantt_Chart.xls</code> and <code>CareerPilot_AI_Risk_Register.xls</code>) adhering to minimal, professional academic standards.</li>
+  </ul>
+
+  <!-- SIGN OFF BLOCK -->
+  <div class="signoff-section">
+    <div class="sign-box">
+      Student Signatures<br>
+      <span style="font-size:11px; font-weight:400; color:#64748b;">(Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, Sidharth K.A)</span>
+    </div>
+    <div class="sign-box">
+      Faculty Evaluator Signature & Date<br>
+      <span style="font-size:11px; font-weight:400; color:#64748b;">(Marks Awarded / Remarks)</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

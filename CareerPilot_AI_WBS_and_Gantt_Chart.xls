@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Title>CareerPilot AI - Work Breakdown Structure and Gantt Chart</Title>
+  <Subject>Experiment No. 03 - WBS and Gantt Scheduling</Subject>
+  <Author>Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, Sidharth K.A</Author>
+  <Created>2026-08-01T09:00:00Z</Created>
+  <Company>CareerPilot AI Project Team</Company>
+ </DocumentProperties>
+ <Styles>
+  <!-- Base Normal Style -->
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#1E293B"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+
+  <!-- Title Style -->
+  <Style ss:ID="TitleStyle">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="16" ss:Bold="1" ss:Color="#0F172A"/>
+  </Style>
+
+  <!-- Subtitle Meta Style -->
+  <Style ss:ID="MetaStyle">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#475569"/>
+  </Style>
+
+  <!-- Table Header Style -->
+  <Style ss:ID="HeaderStyle">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#0F172A"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10.5" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#1E293B" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Phase Header Row Style -->
+  <Style ss:ID="PhaseHeader">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Bold="1" ss:Color="#0F172A"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Regular Data Cell Left -->
+  <Style ss:ID="DataCellLeft">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#334155"/>
+  </Style>
+
+  <!-- Regular Data Cell Center -->
+  <Style ss:ID="DataCellCenter">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#334155"/>
+  </Style>
+
+  <!-- Number & Duration Cell -->
+  <Style ss:ID="DataCellNum">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#334155"/>
+   <NumberFormat ss:Format="#,##0"/>
+  </Style>
+
+  <!-- Progress Cell Format -->
+  <Style ss:ID="DataCellPct">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Bold="1" ss:Color="#334155"/>
+   <NumberFormat ss:Format="0%"/>
+  </Style>
+
+  <!-- Status: Completed -->
+  <Style ss:ID="StatusCompleted">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Bold="1" ss:Color="#166534"/>
+   <Interior ss:Color="#DCFCE7" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Status: In Progress -->
+  <Style ss:ID="StatusInProgress">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Bold="1" ss:Color="#0369A1"/>
+   <Interior ss:Color="#E0F2FE" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Status: Planned -->
+  <Style ss:ID="StatusPlanned">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Bold="1" ss:Color="#475569"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Gantt Bar: Completed -->
+  <Style ss:ID="GanttBarCompleted">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#10B981"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#10B981"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#10B981"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#10B981"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="8" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#10B981" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Gantt Bar: In Progress -->
+  <Style ss:ID="GanttBarInProgress">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#2563EB"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#2563EB"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#2563EB"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#2563EB"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="8" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#2563EB" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Gantt Bar: Planned -->
+  <Style ss:ID="GanttBarPlanned">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="8" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#94A3B8" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Gantt Empty Cell -->
+  <Style ss:ID="GanttEmpty">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Hairline" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Hairline" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Hairline" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Hairline" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Gantt Header Week -->
+  <Style ss:ID="GanttHeaderWeek">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#0F172A"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#334155"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#334155"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#334155"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="8.5" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#334155" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+
+ <!-- ========================================================= -->
+ <!-- WORKSHEET 1: WORK BREAKDOWN STRUCTURE (WBS)               -->
+ <!-- ========================================================= -->
+ <Worksheet ss:Name="WBS_Detailed">
+  <Table ss:DefaultRowHeight="20">
+   <!-- Column Widths -->
+   <Column ss:Width="65"/>   <!-- WBS ID -->
+   <Column ss:Width="160"/>  <!-- Phase -->
+   <Column ss:Width="175"/>  <!-- Module -->
+   <Column ss:Width="200"/>  <!-- Work Package -->
+   <Column ss:Width="280"/>  <!-- Description -->
+   <Column ss:Width="130"/>  <!-- Owner -->
+   <Column ss:Width="85"/>   <!-- Start Date -->
+   <Column ss:Width="85"/>   <!-- End Date -->
+   <Column ss:Width="80"/>   <!-- Duration -->
+   <Column ss:Width="100"/>  <!-- Status -->
+   <Column ss:Width="75"/>   <!-- Progress -->
+
+   <!-- Row 1: Title -->
+   <Row ss:Height="28">
+    <Cell ss:MergeAcross="10" ss:StyleID="TitleStyle">
+     <Data ss:Type="String">CareerPilot AI – Work Breakdown Structure (WBS)</Data>
+    </Cell>
+   </Row>
+
+   <!-- Row 2: Metadata -->
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="10" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Experiment No.: 03 | Date: 01/08/2026 | Project: Placement Intelligence &amp; Career Readiness Platform</Data>
+    </Cell>
+   </Row>
+
+   <!-- Row 3: Team Meta -->
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="10" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Team Members &amp; Owners: Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, Sidharth K.A</Data>
+    </Cell>
+   </Row>
+   <Row ss:Height="10"/>
+
+   <!-- Row 5: Column Headers (matching Experiment 3 Step 2) -->
+   <Row ss:Height="26">
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">WBS ID</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Phase</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Module</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Work Package</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Owner</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Start Date</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">End Date</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Duration (Days)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Status</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Progress</Data></Cell>
+   </Row>
+
+   <!-- PHASE 1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">1.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 1: Project Initiation &amp; Requirements Engineering</Data></Cell>
+   </Row>
+
+   <!-- 1.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Initiation</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Architecture &amp; Scope</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Scope &amp; Tech Architecture</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Define functional specs, AI pipeline architecture, and placement intelligence scope.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-01</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-07</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- 1.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Initiation</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">User Journeys</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Persona &amp; Journey Mapping</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Map student readiness tracks and recruiter shortlisting workflow workflows.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-05</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-11</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- 1.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Initiation</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Environment Setup</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Dev Environment &amp; Version Control</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Configure Git repositories, branches, CI automation, and code standards.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-14</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- PHASE 2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">2.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 2: UI/UX Design &amp; Frontend Foundation</Data></Cell>
+   </Row>
+
+   <!-- 2.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">UI/UX Design</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Design System</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Design Tokens &amp; Responsive Layout</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Create CSS design tokens, modern typography, glassmorphism cards, and dark theme.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-15</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-22</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- 2.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">UI/UX Design</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Landing &amp; Splash</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Splash Loader &amp; Landing Showcase</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Build animated paper-plane splash screen, hero section, metrics and feature showcase.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-20</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-28</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- 2.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">UI/UX Design</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Auth &amp; Access Control</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Dual-Persona Authentication Module</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Implement Student/Recruiter login, registration validation, and password eye toggles.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-08-26</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-04</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- PHASE 3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">3.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 3: Student Dashboard &amp; Application Tracking</Data></Cell>
+   </Row>
+
+   <!-- 3.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Student Platform</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Executive Dashboard</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">KPI Metrics &amp; Career Readiness Gauge</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Interactive stat cards, circular readiness gauge SVG, checklist, and donut breakdown.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-05</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-14</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+
+   <!-- 3.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Student Platform</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Inactivity Guardian</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Idle Countdown &amp; Alert Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Track user activity, trigger inactivity warning banners, and handle auto-pause of AI matching.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-19</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0.9</Data></Cell>
+   </Row>
+
+   <!-- 3.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Student Platform</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Application Tracker</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Job Pipeline &amp; Status Workflow</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Multi-stage pipeline tracking (Bookmarked, Applied, Interviewing, Offer) with deadlines.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-15</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-25</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0.75</Data></Cell>
+   </Row>
+
+   <!-- PHASE 4 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">4.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 4: AI Opportunity Radar &amp; Matching Engine</Data></Cell>
+   </Row>
+
+   <!-- 4.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">AI Matching Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Opportunity DB</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Job Profiles &amp; Skill Vectors Schema</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Build normalized job profiles, required skill sets, salary ranges, and domain taxonomy.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-09-26</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-04</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0.5</Data></Cell>
+   </Row>
+
+   <!-- 4.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">AI Matching Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Matching Algorithm</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Cosine Similarity Match Computation</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Formulate weighted vector matching between student verified skills and job requirements.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-02</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- 4.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">AI Matching Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Opportunity Radar UI</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Radar Visualizer &amp; Match Drawer</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Animated radar sweep graphic, filter controls (domain, remote, min match), and breakdown drawer.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-16</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- PHASE 5 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">5.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 5: Skills Trust Engine &amp; Assessment Pipeline</Data></Cell>
+   </Row>
+
+   <!-- 5.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Trust &amp; Verification</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Skill Builder</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Skill Evidence Validation Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Evidence submission interface (GitHub repos, certificate links) and verification engine.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-17</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-25</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- 5.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Trust &amp; Verification</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Missing Evidence Detector</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Skill Gap Analysis &amp; Alert Widget</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Detect unverified skills, prompt students with missing proof alerts, and calculate Trust Index.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-22</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-30</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- 5.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Assessment Pipeline</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Checkpoint Quizzes</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sequential Assessment &amp; Timed Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Interactive multi-question assessment modal, live countdown timers, and immediate scoring.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-10-28</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-06</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- PHASE 6 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="PhaseHeader"><Data ss:Type="String">6.0</Data></Cell>
+    <Cell ss:MergeAcross="9" ss:StyleID="PhaseHeader"><Data ss:Type="String">Phase 6: Integration, Testing &amp; Final Deployment</Data></Cell>
+   </Row>
+
+   <!-- 6.1 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">QA &amp; Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">End-to-End Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">System Validation &amp; Edge Case Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Validate user flows, local storage persistence, responsive views, and algorithm accuracy.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-07</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-13</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- 6.2 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Performance &amp; UX</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Cross-Device Optimization</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Mobile Tuning &amp; Asset Optimization</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Fine-tune responsive CSS breakpoints, lazy image rendering, and smooth animations.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-11</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-17</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- 6.3 -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Release &amp; Closure</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Review</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Production Deployment &amp; Final Deliverables</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Publish platform build, compile project documentation, Gantt review, and presentation.</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-15</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2026-11-21</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="DataCellPct"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+
+   <!-- SUMMARY ROW -->
+   <Row ss:Height="24">
+    <Cell ss:MergeAcross="7" ss:StyleID="PhaseHeader"><Data ss:Type="String">Total Project Duration / Work Packages Count: 15 Packages</Data></Cell>
+    <Cell ss:StyleID="DataCellNum" ss:Formula="=SUM(R[-16]C:R[-1]C)/2"><Data ss:Type="Number">112</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">Active</Data></Cell>
+    <Cell ss:StyleID="DataCellPct" ss:Formula="=AVERAGE(R[-16]C:R[-1]C)"><Data ss:Type="Number">0.51</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+
+ <!-- ========================================================= -->
+ <!-- WORKSHEET 2: GANTT CHART SCHEDULE (WEEKLY TIMELINE)       -->
+ <!-- ========================================================= -->
+ <Worksheet ss:Name="Gantt_Chart">
+  <Table ss:DefaultRowHeight="20">
+   <!-- Column Widths -->
+   <Column ss:Width="55"/>   <!-- WBS ID -->
+   <Column ss:Width="190"/>  <!-- Work Package -->
+   <Column ss:Width="125"/>  <!-- Owner -->
+   <Column ss:Width="75"/>   <!-- Start -->
+   <Column ss:Width="75"/>   <!-- End -->
+   <Column ss:Width="50"/>   <!-- Days -->
+   <Column ss:Width="85"/>   <!-- Status -->
+   <!-- 16 Weekly Timeline Columns -->
+   <Column ss:Width="38"/>   <!-- W1 -->
+   <Column ss:Width="38"/>   <!-- W2 -->
+   <Column ss:Width="38"/>   <!-- W3 -->
+   <Column ss:Width="38"/>   <!-- W4 -->
+   <Column ss:Width="38"/>   <!-- W5 -->
+   <Column ss:Width="38"/>   <!-- W6 -->
+   <Column ss:Width="38"/>   <!-- W7 -->
+   <Column ss:Width="38"/>   <!-- W8 -->
+   <Column ss:Width="38"/>   <!-- W9 -->
+   <Column ss:Width="38"/>   <!-- W10 -->
+   <Column ss:Width="38"/>   <!-- W11 -->
+   <Column ss:Width="38"/>   <!-- W12 -->
+   <Column ss:Width="38"/>   <!-- W13 -->
+   <Column ss:Width="38"/>   <!-- W14 -->
+   <Column ss:Width="38"/>   <!-- W15 -->
+   <Column ss:Width="38"/>   <!-- W16 -->
+
+   <!-- Row 1: Title -->
+   <Row ss:Height="28">
+    <Cell ss:MergeAcross="22" ss:StyleID="TitleStyle">
+     <Data ss:Type="String">CareerPilot AI – Project Scheduling Gantt Chart (16 Weeks)</Data>
+    </Cell>
+   </Row>
+
+   <!-- Row 2: Legend -->
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="6" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Legend: [■ Green] Completed Task  |  [■ Blue] In Progress Task  |  [■ Gray] Planned Task</Data>
+    </Cell>
+    <Cell ss:MergeAcross="15" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Weekly Timeline: August 01, 2026 – November 21, 2026</Data>
+    </Cell>
+   </Row>
+   <Row ss:Height="8"/>
+
+   <!-- Row 4: Header Row (Month Groups) -->
+   <Row ss:Height="18">
+    <Cell ss:MergeAcross="6" ss:StyleID="HeaderStyle"><Data ss:Type="String">Task Specifications &amp; Assignment</Data></Cell>
+    <Cell ss:MergeAcross="3" ss:StyleID="HeaderStyle"><Data ss:Type="String">August 2026</Data></Cell>
+    <Cell ss:MergeAcross="3" ss:StyleID="HeaderStyle"><Data ss:Type="String">September 2026</Data></Cell>
+    <Cell ss:MergeAcross="3" ss:StyleID="HeaderStyle"><Data ss:Type="String">October 2026</Data></Cell>
+    <Cell ss:MergeAcross="3" ss:StyleID="HeaderStyle"><Data ss:Type="String">November 2026</Data></Cell>
+   </Row>
+
+   <!-- Row 5: Header Row (Weeks) -->
+   <Row ss:Height="22">
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">ID</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Work Package</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Owner</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Start</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">End</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Days</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Status</Data></Cell>
+    <!-- Weeks W1 to W16 -->
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W1</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W2</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W3</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W4</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W5</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W6</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W7</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W8</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W9</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W10</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W11</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W12</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W13</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W14</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W15</Data></Cell>
+    <Cell ss:StyleID="GanttHeaderWeek"><Data ss:Type="String">W16</Data></Cell>
+   </Row>
+
+   <!-- Task 1.1: W1 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Project Scope &amp; Tech Architecture</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">01/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">07/08</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 1.2: W1 - W2 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Persona &amp; Journey Mapping</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">05/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">11/08</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 1.3: W2 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">1.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Dev Environment &amp; Version Control</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">08/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">14/08</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 2.1: W3 - W4 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Design Tokens &amp; Responsive Layout</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">15/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">22/08</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 2.2: W3 - W4 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Splash Loader &amp; Landing Showcase</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">20/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">28/08</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 2.3: W4 - W5 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">2.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Dual-Persona Authentication Module</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">26/08</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">04/09</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 3.1: W5 - W7 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">KPI Metrics &amp; Career Readiness Gauge</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">05/09</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">14/09</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusCompleted"><Data ss:Type="String">Completed</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarCompleted"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 3.2: W6 - W7 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Idle Countdown &amp; Alert Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">10/09</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">19/09</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">90%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 3.3: W7 - W8 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">3.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Job Pipeline &amp; Status Workflow</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">15/09</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">25/09</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">75%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 4.1: W8 - W10 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Job Profiles &amp; Skill Vectors Schema</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">26/09</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">04/10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusInProgress"><Data ss:Type="String">In Progress</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarInProgress"><Data ss:Type="String">50%</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 4.2: W9 - W10 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Cosine Similarity Match Computation</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">02/10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">10/10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 4.3: W10 - W11 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">4.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Radar Visualizer &amp; Match Drawer</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">08/10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">16/10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 5.1: W11 - W13 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Skill Evidence Validation Engine</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">17/10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">25/10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 5.2: W12 - W13 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Skill Gap Analysis &amp; Alert Widget</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">22/10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">30/10</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 5.3: W13 - W14 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">5.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sequential Assessment &amp; Timed Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">28/10</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">06/11</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 6.1: W14 - W15 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.1</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">System Validation &amp; Edge Case Testing</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">07/11</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">13/11</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+   </Row>
+
+   <!-- Task 6.2: W15 - W16 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.2</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Mobile Tuning &amp; Asset Optimization</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">11/11</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">17/11</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+   </Row>
+
+   <!-- Task 6.3: W15 - W16 -->
+   <Row ss:Height="20">
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">6.3</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Production Deployment &amp; Final Deliverables</Data></Cell>
+    <Cell ss:StyleID="DataCellLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">15/11</Data></Cell>
+    <Cell ss:StyleID="DataCellCenter"><Data ss:Type="String">21/11</Data></Cell>
+    <Cell ss:StyleID="DataCellNum"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="StatusPlanned"><Data ss:Type="String">Planned</Data></Cell>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttEmpty"/>
+    <Cell ss:StyleID="GanttBarPlanned"><Data ss:Type="String">■</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

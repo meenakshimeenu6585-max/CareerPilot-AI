@@ -106,28 +106,28 @@ const DEFAULT_QUIZ_QUESTIONS = {
   ],
   checkpoint2: [
     {
-      q: 'Which of the following describes the difference between "let" and "var" in JavaScript?',
-      options: ['let is block-scoped, var is function-scoped', 'let is function-scoped, var is block-scoped', 'let variables can be re-declared, var cannot', 'let variables are hoisted, var are not'],
+      q: '[Variables & Scope] Which of the following describes the difference between "let" and "var" in JavaScript?',
+      options: ['let is block-scoped, var is function-scoped', 'let is function-scoped, var is block-scoped', 'let variables can be re-declared, var cannot', 'let variables are hoisted with values, var are not'],
       correct: 0
     },
     {
-      q: 'What is the output of `console.log(typeof NaN)`?',
+      q: '[Variables & Types] What is the evaluated output of `typeof NaN` in JavaScript?',
       options: ['"number"', '"nan"', '"undefined"', '"object"'],
       correct: 0
     },
     {
-      q: 'In Python, how do you insert an item at the beginning of a list `lst`?',
+      q: '[Functions & Scope] What is a Closure in JavaScript?',
+      options: ['A function bundled with references to its outer lexical environment', 'A method to close browser windows', 'A private class constructor syntax', 'A garbage collector clean-up trigger'],
+      correct: 0
+    },
+    {
+      q: '[Logic & Conditionals] In Boolean logic evaluation, what does `Boolean(0 || "" || "CareerPilot")` evaluate to?',
+      options: ['true', 'false', 'undefined', 'null'],
+      correct: 0
+    },
+    {
+      q: '[Algorithms & Data Structures] In Python, which method inserts an item at index 0 of a list `lst` in O(n) algorithmic time?',
       options: ['lst.insert(0, item)', 'lst.append(item)', 'lst.prepend(item)', 'lst.push(0, item)'],
-      correct: 0
-    },
-    {
-      q: 'What is a closure in JavaScript?',
-      options: ['A function that remembers its outer lexical scope', 'A method to close browser windows', 'A private class constructor', 'A garbage collection tool'],
-      correct: 0
-    },
-    {
-      q: 'Which JS function is used to serialize an object into a JSON string?',
-      options: ['JSON.stringify()', 'JSON.parse()', 'JSON.toString()', 'JSON.serialize()'],
       correct: 0
     }
   ],
@@ -321,34 +321,44 @@ function startSplashTimer() {
 function toggleAuthView(hash) {
   const isLogin = hash === '#auth-login';
 
-  document.getElementById('auth-heading-register').classList.toggle('hidden', isLogin);
-  document.getElementById('auth-heading-login').classList.toggle('hidden', !isLogin);
+  // Helper to safely toggle class on an element by ID
+  function safeToggle(id, className, force) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle(className, force);
+  }
 
-  document.getElementById('group-reg-name').classList.toggle('hidden', isLogin);
-  document.getElementById('group-reg-confirm-grad').classList.toggle('hidden', isLogin);
-  document.getElementById('group-reg-course-role').classList.toggle('hidden', isLogin);
+  safeToggle('auth-heading-register', 'hidden', isLogin);
+  safeToggle('auth-heading-login', 'hidden', !isLogin);
 
-  document.getElementById('reg-terms-checkbox').classList.toggle('hidden', isLogin);
-  document.getElementById('login-remember-checkbox').classList.toggle('hidden', !isLogin);
-  document.getElementById('forgot-password-link').classList.toggle('hidden', !isLogin);
+  safeToggle('group-reg-name', 'hidden', isLogin);
+  safeToggle('group-reg-confirm-grad', 'hidden', isLogin);
+  safeToggle('group-reg-course-role', 'hidden', isLogin);
+
+  safeToggle('reg-terms-checkbox', 'hidden', isLogin);
+  safeToggle('login-remember-checkbox', 'hidden', !isLogin);
+  safeToggle('forgot-password-link', 'hidden', !isLogin);
 
   const submitBtn = document.getElementById('btn-auth-submit');
   const dividerText = document.getElementById('auth-divider-text');
 
   if (isLogin) {
-    submitBtn.textContent = 'Sign In';
-    dividerText.textContent = 'or Sign in with Email';
-    document.querySelector('.social-btn-google span').textContent = 'Sign in with Google';
-    document.querySelector('.social-btn-linkedin span').textContent = 'Sign in with LinkedIn';
-    document.getElementById('redirect-to-login').classList.add('hidden');
-    document.getElementById('redirect-to-register').classList.remove('hidden');
+    if (submitBtn) submitBtn.textContent = 'Sign In';
+    if (dividerText) dividerText.textContent = 'or Sign in with Email';
+    const googleSpan = document.querySelector('.social-btn-google span');
+    const linkedinSpan = document.querySelector('.social-btn-linkedin span');
+    if (googleSpan) googleSpan.textContent = 'Sign in with Google';
+    if (linkedinSpan) linkedinSpan.textContent = 'Sign in with LinkedIn';
+    safeToggle('redirect-to-login', 'hidden', true);
+    safeToggle('redirect-to-register', 'hidden', false);
   } else {
-    submitBtn.textContent = 'Create account';
-    dividerText.textContent = 'or Sign up with Email';
-    document.querySelector('.social-btn-google span').textContent = 'Sign up with Google';
-    document.querySelector('.social-btn-linkedin span').textContent = 'Sign up with LinkedIn';
-    document.getElementById('redirect-to-login').classList.remove('hidden');
-    document.getElementById('redirect-to-register').classList.add('hidden');
+    if (submitBtn) submitBtn.textContent = 'Create account';
+    if (dividerText) dividerText.textContent = 'or Sign up with Email';
+    const googleSpan = document.querySelector('.social-btn-google span');
+    const linkedinSpan = document.querySelector('.social-btn-linkedin span');
+    if (googleSpan) googleSpan.textContent = 'Sign up with Google';
+    if (linkedinSpan) linkedinSpan.textContent = 'Sign up with LinkedIn';
+    safeToggle('redirect-to-login', 'hidden', false);
+    safeToggle('redirect-to-register', 'hidden', true);
   }
 }
 
@@ -970,7 +980,7 @@ function renderAssessmentsTimeline() {
   if (badgeGallery) {
     badgeGallery.innerHTML = '';
     if (cpState.badges.length === 0) {
-      badgeGallery.innerHTML = `<span style="font-size:0.8rem; color:var(--text-light)">No skill badges earned yet. Pass assessments checkpoints to verify skills.</span>`;
+      badgeGallery.innerHTML = `<span style="font-size:0.8rem; color:var(--text-light)">No skill badges earned yet. Complete assessments to verify skills.</span>`;
     } else {
       cpState.badges.forEach(badge => {
         const item = document.createElement('div');
@@ -984,65 +994,56 @@ function renderAssessmentsTimeline() {
     }
   }
 
-  const chk1Passed = cpState.assessments.checkpoint1.passed;
-  const chk2Passed = cpState.assessments.checkpoint2.passed;
+  const chk1Passed = cpState.assessments.checkpoint1?.passed;
+  const chk2Passed = cpState.assessments.checkpoint2?.passed;
+  const chk3Passed = cpState.assessments.checkpoint3?.passed;
 
+  // 1. General Aptitude Assessment (Independent - no checkpoint dependency)
   const node1 = document.getElementById('node-chk-1');
   const status1 = document.getElementById('status-chk-1');
-  const btn1 = node1.querySelector('.btn-start-quiz-trigger');
+  const btn1 = node1 ? node1.querySelector('.btn-start-quiz-trigger') : null;
 
-  if (chk1Passed) {
-    status1.textContent = 'Passed (★)';
-    status1.style.background = 'var(--success-light)';
+  if (node1 && status1 && btn1) {
+    node1.classList.remove('locked');
+    node1.classList.add('unlocked');
+    status1.textContent = chk1Passed ? 'Passed (★)' : 'Available';
+    status1.style.background = chk1Passed ? 'var(--success-light)' : 'var(--success-light)';
     status1.style.color = 'var(--success)';
-    btn1.textContent = 'Retake Assessment';
+    btn1.disabled = false;
+    btn1.className = 'btn-get-started btn-start-quiz-trigger';
+    btn1.textContent = chk1Passed ? 'Retake Assessment' : 'Start Aptitude Test';
   }
 
+  // 2. Programming Assessment (Independent - NOT locked based on Aptitude; uses Integrity Checkpoint)
   const node2 = document.getElementById('node-chk-2');
   const status2 = document.getElementById('status-chk-2');
-  const btn2 = node2.querySelector('.btn-start-quiz-trigger');
+  const btn2 = node2 ? node2.querySelector('.btn-start-quiz-trigger') : null;
 
-  if (chk1Passed) {
+  if (node2 && status2 && btn2) {
     node2.classList.remove('locked');
     node2.classList.add('unlocked');
-    status2.textContent = chk2Passed ? 'Passed (★)' : 'Available';
+    status2.textContent = chk2Passed ? 'Passed (★)' : 'Available • Integrity Checkpoint';
     status2.style.background = chk2Passed ? 'var(--success-light)' : 'var(--primary-light)';
     status2.style.color = chk2Passed ? 'var(--success)' : 'var(--primary)';
     btn2.disabled = false;
     btn2.className = 'btn-get-started btn-start-quiz-trigger';
     btn2.textContent = chk2Passed ? 'Retake Assessment' : 'Start Programming Test';
-  } else {
-    node2.classList.add('locked');
-    status2.textContent = '🔒 Locked';
-    status2.style.background = '#E2E8F0';
-    status2.style.color = 'var(--text-muted)';
-    btn2.disabled = true;
-    btn2.className = 'btn-login btn-start-quiz-trigger';
-    btn2.textContent = 'Start Programming Test';
   }
 
+  // 3. Domain Specialist Assessment (Independent - NOT locked based on other assessments)
   const node3 = document.getElementById('node-chk-3');
   const status3 = document.getElementById('status-chk-3');
-  const btn3 = node3.querySelector('.btn-start-quiz-trigger');
-  const chk3Passed = cpState.assessments.checkpoint3.passed;
+  const btn3 = node3 ? node3.querySelector('.btn-start-quiz-trigger') : null;
 
-  if (chk2Passed) {
+  if (node3 && status3 && btn3) {
     node3.classList.remove('locked');
     node3.classList.add('unlocked');
     status3.textContent = chk3Passed ? 'Passed (★)' : 'Available';
-    status3.style.background = chk3Passed ? 'var(--success-light)' : 'var(--primary-light)';
-    status3.style.color = chk3Passed ? 'var(--success)' : 'var(--primary)';
+    status3.style.background = chk3Passed ? 'var(--success-light)' : 'var(--purple-light)';
+    status3.style.color = chk3Passed ? 'var(--success)' : 'var(--purple)';
     btn3.disabled = false;
     btn3.className = 'btn-get-started btn-start-quiz-trigger';
     btn3.textContent = chk3Passed ? 'Retake Assessment' : 'Start Domain Test';
-  } else {
-    node3.classList.add('locked');
-    status3.textContent = '🔒 Locked';
-    status3.style.background = '#E2E8F0';
-    status3.style.color = 'var(--text-muted)';
-    btn3.disabled = true;
-    btn3.className = 'btn-login btn-start-quiz-trigger';
-    btn3.textContent = 'Start Domain Test';
   }
 }
 
@@ -1053,13 +1054,27 @@ function launchQuiz(checkpointNum) {
   cpState.quizTelemetry = { pasteCount: 0, blurCount: 0, startTime: Date.now() };
 
   const titleMap = {
-    1: 'Checkpoint 1: General Aptitude Assessment',
-    2: 'Checkpoint 2: Programming Fundamentals (JS/Python)',
-    3: 'Checkpoint 3: Domain Specialist (React/SQL)'
+    1: 'General Aptitude Assessment (Independent)',
+    2: 'Programming Assessment: Functions, Variables, Logic & Algorithms',
+    3: 'Domain Specialist Assessment (React/SQL)'
   };
   document.getElementById('quiz-display-title').textContent = titleMap[checkpointNum];
   document.getElementById('quiz-overlay-panel').classList.remove('hidden');
   document.getElementById('quiz-blur-warning').classList.add('hidden');
+
+  // Configure telemetry banner: ONLY Programming Assessment uses the integrity checkpoint mechanism
+  const badgeEl = document.getElementById('quiz-telemetry-badge');
+  if (badgeEl) {
+    if (checkpointNum === 2) {
+      badgeEl.textContent = '🔒 INTEGRITY CHECKPOINT: ANTI-COPY/PASTE ACTIVE';
+      badgeEl.style.background = 'var(--danger-light)';
+      badgeEl.style.color = 'var(--danger)';
+    } else {
+      badgeEl.textContent = '📝 INDEPENDENT ASSESSMENT MODE';
+      badgeEl.style.background = 'var(--success-light)';
+      badgeEl.style.color = 'var(--success)';
+    }
+  }
 
   loadQuizQuestion(0);
 
@@ -1126,6 +1141,7 @@ function submitQuizResults() {
   clearInterval(cpState.quizTimerId);
   document.getElementById('quiz-overlay-panel').classList.add('hidden');
 
+  const isProgrammingCheckpoint = cpState.activeQuiz === 2;
   const quizKey = cpState.activeQuiz === 1 ? 'checkpoint1' : cpState.activeQuiz === 2 ? 'checkpoint2' : 'checkpoint3';
   const questions = DEFAULT_QUIZ_QUESTIONS[quizKey];
 
@@ -1153,11 +1169,11 @@ function submitQuizResults() {
     skillNameToVerify = 'Aptitude';
   } else if (cpState.activeQuiz === 2) {
     checkpointLabel = 'checkpoint2';
-    badgeName = 'Verified JavaScript Engine';
+    badgeName = 'Verified Programming Specialist';
     skillNameToVerify = 'JavaScript';
   } else {
     checkpointLabel = 'checkpoint3';
-    badgeName = 'Verified React Specialist';
+    badgeName = 'Verified Domain Specialist';
     skillNameToVerify = 'React';
   }
 
@@ -1187,16 +1203,24 @@ function submitQuizResults() {
   document.getElementById('report-final-score').style.color = isPass ? 'var(--success)' : 'var(--danger)';
   document.getElementById('report-time-taken').textContent = timeStr;
 
-  document.getElementById('telemetry-paste-count').textContent = cpState.quizTelemetry.pasteCount;
-  document.getElementById('telemetry-blur-count').textContent = cpState.quizTelemetry.blurCount;
+  const telemetrySection = document.getElementById('telemetry-integrity-container');
+  if (telemetrySection) {
+    if (isProgrammingCheckpoint) {
+      telemetrySection.style.display = 'block';
+      document.getElementById('telemetry-paste-count').textContent = cpState.quizTelemetry.pasteCount;
+      document.getElementById('telemetry-blur-count').textContent = cpState.quizTelemetry.blurCount;
 
-  const verdictEl = document.getElementById('telemetry-verdict');
-  if (cpState.quizTelemetry.pasteCount > 0 || cpState.quizTelemetry.blurCount > 1) {
-    verdictEl.textContent = 'Flagged: Abnormal inputs detected (Copy/paste or Tab blur)';
-    verdictEl.style.color = 'var(--warning)';
-  } else {
-    verdictEl.textContent = 'Trusted Submission (Clean Telemetry)';
-    verdictEl.style.color = 'var(--success)';
+      const verdictEl = document.getElementById('telemetry-verdict');
+      if (cpState.quizTelemetry.pasteCount > 0 || cpState.quizTelemetry.blurCount > 1) {
+        verdictEl.textContent = 'Flagged: Abnormal inputs detected (Copy/paste or Tab blur)';
+        verdictEl.style.color = 'var(--warning)';
+      } else {
+        verdictEl.textContent = 'Trusted Submission (Zero Malpractice Detected)';
+        verdictEl.style.color = 'var(--success)';
+      }
+    } else {
+      telemetrySection.style.display = 'none';
+    }
   }
 }
 
@@ -1293,24 +1317,24 @@ function updateDashboardUI() {
   document.getElementById('stat-active-opps').textContent = matchingOpps;
 
   let assessmentsDone = 0;
-  if (cpState.assessments.checkpoint1.passed) assessmentsDone++;
-  if (cpState.assessments.checkpoint2.passed) assessmentsDone++;
-  if (cpState.assessments.checkpoint3.passed) assessmentsDone++;
+  if (cpState.assessments.checkpoint1?.passed) assessmentsDone++;
+  if (cpState.assessments.checkpoint2?.passed) assessmentsDone++;
+  if (cpState.assessments.checkpoint3?.passed) assessmentsDone++;
   document.getElementById('stat-assessments-completed').textContent = assessmentsDone;
 
   document.getElementById('stat-trust-index').textContent = `${cpState.trustIndex}%`;
 
   let readinessScore = 30;
   const hasSkillBadge = cpState.skills.length >= 2;
-  const passedAptitude = cpState.assessments.checkpoint1.passed;
+  const passedAnyAssessment = cpState.assessments.checkpoint1?.passed || cpState.assessments.checkpoint2?.passed || cpState.assessments.checkpoint3?.passed;
 
   document.getElementById('readiness-chk-skill').className = hasSkillBadge ? 'checklist-item done' : 'checklist-item';
   document.getElementById('readiness-chk-skill').querySelector('.check-box-icon').textContent = hasSkillBadge ? '✔️' : '';
   if (hasSkillBadge) readinessScore += 35;
 
-  document.getElementById('readiness-chk-assess').className = passedAptitude ? 'checklist-item done' : 'checklist-item';
-  document.getElementById('readiness-chk-assess').querySelector('.check-box-icon').textContent = passedAptitude ? '✔️' : '';
-  if (passedAptitude) readinessScore += 35;
+  document.getElementById('readiness-chk-assess').className = passedAnyAssessment ? 'checklist-item done' : 'checklist-item';
+  document.getElementById('readiness-chk-assess').querySelector('.check-box-icon').textContent = passedAnyAssessment ? '✔️' : '';
+  if (passedAnyAssessment) readinessScore += 35;
 
   const readinessFill = document.getElementById('readiness-gauge-fill');
   const readinessPct = document.getElementById('readiness-gauge-pct');
@@ -1405,18 +1429,17 @@ function initDashboardInteractions() {
     });
   }
 
-  document.getElementById('btn-dashboard-to-skills').addEventListener('click', () => {
-    document.getElementById('menu-skillbuilder').click();
-  });
-  document.getElementById('btn-dashboard-to-apps').addEventListener('click', () => {
-    document.getElementById('menu-applications').click();
-  });
-  document.getElementById('btn-dashboard-to-radar').addEventListener('click', () => {
-    document.getElementById('menu-opportunities').click();
-  });
-  document.getElementById('btn-dashboard-fix-evidence').addEventListener('click', () => {
-    document.getElementById('menu-skillbuilder').click();
-  });
+  const btnToSkills = document.getElementById('btn-dashboard-to-skills');
+  if (btnToSkills) btnToSkills.addEventListener('click', () => { document.getElementById('menu-skillbuilder')?.click(); });
+
+  const btnToApps = document.getElementById('btn-dashboard-to-apps');
+  if (btnToApps) btnToApps.addEventListener('click', () => { document.getElementById('menu-applications')?.click(); });
+
+  const btnToRadar = document.getElementById('btn-dashboard-to-radar');
+  if (btnToRadar) btnToRadar.addEventListener('click', () => { document.getElementById('menu-opportunities')?.click(); });
+
+  const btnFixEvidence = document.getElementById('btn-dashboard-fix-evidence');
+  if (btnFixEvidence) btnFixEvidence.addEventListener('click', () => { document.getElementById('menu-skillbuilder')?.click(); });
 
   const matchSlider = document.getElementById('opp-match-slider');
   if (matchSlider) {

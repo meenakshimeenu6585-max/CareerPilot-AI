@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPilot AI – Project References (Risk Register & Gantt Charts)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 40px 20px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    /* Top banner */
+    .header-card {
+      background: #ffffff;
+      padding: 24px 30px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .header-card h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+
+    .header-card p {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* Reference Card Container */
+    .reference-section {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      page-break-inside: avoid;
+    }
+
+    .ref-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #eff6ff;
+      color: #2563eb;
+      margin-bottom: 12px;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* -------------------------------------------------------------------------
+       REFERENCE 1: RISK REGISTER (EXACT IMAGE 1 REPLICA)
+    -------------------------------------------------------------------------- */
+    .title-ref1 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000000;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    table.ref1-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13.5px;
+      color: #000000;
+      border: 2px solid #000000;
+    }
+
+    table.ref1-table th, 
+    table.ref1-table td {
+      border: 1.5px solid #000000;
+      padding: 10px 12px;
+      vertical-align: middle;
+      line-height: 1.4;
+    }
+
+    table.ref1-table th {
+      font-weight: bold;
+      text-align: left;
+      background-color: #ffffff;
+    }
+
+    table.ref1-table td.prob-impact {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    /* -------------------------------------------------------------------------
+       REFERENCE 2: GANTT CHART 8-WEEK TABLE (EXACT IMAGE 2 REPLICA)
+    -------------------------------------------------------------------------- */
+    .title-ref2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000000;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    table.ref2-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13.5px;
+      color: #000000;
+      border: 2px solid #000000;
+    }
+
+    table.ref2-table th, 
+    table.ref2-table td {
+      border: 1.5px solid #000000;
+      padding: 8px 10px;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    table.ref2-table th.th-activity,
+    table.ref2-table td.td-activity {
+      text-align: left;
+      font-weight: normal;
+      width: 44%;
+    }
+
+    table.ref2-table th.th-activity {
+      font-weight: bold;
+    }
+
+    table.ref2-table th.th-week {
+      width: 7%;
+      font-weight: bold;
+    }
+
+    /* Blue shaded block from reference image */
+    td.ref2-shaded {
+      background-color: #bdd7ee !important; /* Soft steel/sky blue matching image 2 */
+    }
+
+    /* -------------------------------------------------------------------------
+       REFERENCE 3: EXCEL GANTT SPREADSHEET VIEW (EXACT IMAGE 3 REPLICA)
+    -------------------------------------------------------------------------- */
+    .excel-window {
+      background: #f8fafc;
+      border: 1px solid #94a3b8;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .excel-ribbon {
+      background: #f1f5f9;
+      border-bottom: 1px solid #cbd5e1;
+      padding: 6px 14px;
+      font-size: 11px;
+      color: #475569;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    table.excel-grid {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 900px;
+      font-size: 11.5px;
+      color: #1e293b;
+      background: #ffffff;
+    }
+
+    table.excel-grid th, 
+    table.excel-grid td {
+      border: 1px solid #d4d4d8;
+      padding: 3px 6px;
+      height: 22px;
+      white-space: nowrap;
+    }
+
+    /* Column header row (A, B, C...) */
+    tr.excel-col-headers th {
+      background: #f4f4f5;
+      color: #52525b;
+      font-weight: 600;
+      font-size: 11px;
+      text-align: center;
+      width: 28px;
+    }
+
+    tr.excel-col-headers th.col-a {
+      width: 230px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    /* Row number column (1, 2, 3...) */
+    td.excel-row-num {
+      background: #f4f4f5;
+      color: #71717a;
+      font-weight: 600;
+      text-align: center;
+      width: 28px;
+      user-select: none;
+    }
+
+    /* Task text cells */
+    td.excel-task-name {
+      font-weight: 500;
+      color: #18181b;
+      padding-left: 8px;
+    }
+
+    /* Colored Timeline Bars matching Image 3 */
+    td.bar-black {
+      background-color: #18181b !important; /* Dark Black/Navy */
+    }
+
+    td.bar-blue {
+      background-color: #1d4ed8 !important; /* Rich Blue */
+    }
+
+    td.bar-green {
+      background-color: #166534 !important; /* Forest / Deep Green */
+    }
+
+    td.bar-brown {
+      background-color: #92400e !important; /* Brown / Bronze */
+    }
+
+    td.bar-red {
+      background-color: #dc2626 !important; /* Alert Red */
+    }
+
+    td.bar-purple {
+      background-color: #4338ca !important; /* Indigo / Violet */
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .color-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .header-card, .btn-group {
+        display: none;
+      }
+      .reference-section {
+        border: none;
+        box-shadow: none;
+        padding: 10px 0 30px 0;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Top Action Bar -->
+  <div class="header-card">
+    <div>
+      <span class="ref-badge">Academic Reference Document</span>
+      <h1>CareerPilot AI – Project Reference Models</h1>
+      <p>Formatted in accordance with academic project management lab reference specifications.</p>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="btn btn-secondary" onclick="copyAllMarkdown()">📋 Copy As Markdown</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       REFERENCE 1: RISK REGISTER (MATCHING IMAGE 1)
+  ========================================================================== -->
+  <div class="reference-section" id="risk-register-ref">
+    <span class="ref-badge">Reference 1 • Exact 4-Column Layout</span>
+    <div class="title-ref1">RISK REGISTER – CAREERPILOT AI</div>
+
+    <table class="ref1-table">
+      <thead>
+        <tr>
+          <th style="width: 38%;">Risk</th>
+          <th style="width: 14%;">Probability</th>
+          <th style="width: 14%;">Impact</th>
+          <th style="width: 34%;">Mitigation Plan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Cold-start & inaccurate match</strong></td>
+          <td class="prob-impact">High</td>
+          <td class="prob-impact">High</td>
+          <td>Enforce onboarding requirement of 3 baseline skills and use hybrid keyword/vector cosine matching fallbacks.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Skill evidence fabrication or broken links</strong></td>
+          <td class="prob-impact">Medium</td>
+          <td class="prob-impact">High</td>
+          <td>Implement automated repo regex checks, certificate domain whitelisting, and mandatory checkpoint quiz validation.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Client-side latency & radar visualizer lag</strong></td>
+          <td class="prob-impact">Medium</td>
+          <td class="prob-impact">Medium</td>
+          <td>Debounce filter inputs, optimize vector computations with async routines, and cache precomputed job match scores.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Authentication & data security vulnerabilities</strong></td>
+          <td class="prob-impact">Medium</td>
+          <td class="prob-impact">High</td>
+          <td>Use secure token validation, password hashing, input sanitization, and role-based access control (Student / Recruiter).</td>
+        </tr>
+        <tr>
+          <td><strong>5. Assessment test fatigue or drop-off</strong></td>
+          <td class="prob-impact">Medium</td>
+          <td class="prob-impact">Medium</td>
+          <td>Structure assessments into bite-sized 5-question micro-quizzes with real-time auto-save and progress indicators.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- =========================================================================
+       REFERENCE 2: 8-WEEK GANTT CHART (MATCHING IMAGE 2)
+  ========================================================================== -->
+  <div class="reference-section" id="gantt-chart-ref">
+    <span class="ref-badge">Reference 2 • 8-Week Table with Shaded Cells</span>
+    <div class="title-ref2">GANTT CHART – CAREERPILOT AI</div>
+
+    <table class="ref2-table">
+      <thead>
+        <tr>
+          <th class="th-activity">Activities</th>
+          <th class="th-week">W1</th>
+          <th class="th-week">W2</th>
+          <th class="th-week">W3</th>
+          <th class="th-week">W4</th>
+          <th class="th-week">W5</th>
+          <th class="th-week">W6</th>
+          <th class="th-week">W7</th>
+          <th class="th-week">W8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-activity">Requirement Analysis</td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">System Design</td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">AI Matching Engine & Backend</td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Web Application & Dashboard</td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Skills Trust & Assessment Module</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Testing</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Bug Fixing</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Deployment</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+        </tr>
+        <tr>
+          <td class="td-activity">Documentation</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+          <td class="ref2-shaded"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- =========================================================================
+       REFERENCE 3: EXCEL GANTT CHART MODULAR SPREADSHEET (MATCHING IMAGE 3)
+  ========================================================================== -->
+  <div class="reference-section" id="excel-gantt-ref">
+    <span class="ref-badge">Reference 3 • Color-Coded Excel Spreadsheet View</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+      <div class="title-ref2" style="margin-bottom:0;">EXCEL GANTT SCHEDULE – CAREERPILOT AI</div>
+      <span style="font-size:12px; color:#64748b; font-family:'JetBrains Mono', monospace;">Sheet1 (Timeline Grid)</span>
+    </div>
+
+    <div class="excel-window">
+      <div class="excel-ribbon">
+        <span>AutoSave: On | File: CareerPilot_AI_Modular_Gantt.xlsx</span>
+        <span>View: Normal | 100% Zoom</span>
+      </div>
+
+      <table class="excel-grid">
+        <thead>
+          <tr class="excel-col-headers">
+            <th style="width:30px;"></th>
+            <th class="col-a">A</th>
+            <th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th><th>L</th><th>M</th><th>N</th><th>O</th><th>P</th><th>Q</th><th>R</th><th>S</th><th>T</th><th>U</th><th>V</th><th>W</th><th>X</th><th>Y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 1: empty/header -->
+          <tr>
+            <td class="excel-row-num">1</td>
+            <td class="excel-task-name" style="font-weight:700; color:#0f172a;">Task / Activity</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+
+          <!-- Planning Phase (Black) -->
+          <tr>
+            <td class="excel-row-num">2</td>
+            <td class="excel-task-name">Requirement Gathering</td>
+            <td></td><td></td><td class="bar-black"></td><td class="bar-black"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="excel-row-num">3</td>
+            <td class="excel-task-name">Feasibility Study</td>
+            <td></td><td></td><td></td><td></td><td class="bar-black"></td><td class="bar-black"></td><td class="bar-black"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="excel-row-num">4</td>
+            <td class="excel-task-name">Team & Role Allocation</td>
+            <td></td><td></td><td></td><td></td><td class="bar-black"></td><td class="bar-black"></td><td class="bar-black"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+          <!-- Design Phase (Blue) -->
+          <tr>
+            <td class="excel-row-num">6</td>
+            <td class="excel-task-name">Use Case & Class Diagrams</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-blue"></td><td class="bar-blue"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="excel-row-num">7</td>
+            <td class="excel-task-name">System Architecture Design</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-blue"></td><td class="bar-blue"></td><td class="bar-blue"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">9</td>
+            <td class="excel-task-name">UI / UX Design</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-blue"></td><td class="bar-blue"></td><td class="bar-blue"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+          <!-- Core Modules (Green) -->
+          <tr>
+            <td class="excel-row-num">11</td>
+            <td class="excel-task-name">Mod 1: UI & Student Dashboard</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">13</td>
+            <td class="excel-task-name">Mod 2: AI Matching & Backend</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">15</td>
+            <td class="excel-task-name">Mod 3: Skill Trust & Verification</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">16</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">17</td>
+            <td class="excel-task-name">Mod 4: Assessment & Timed Quizzes</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td class="bar-green"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">18</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+          <!-- Integration & Testing (Brown) -->
+          <tr>
+            <td class="excel-row-num">19</td>
+            <td class="excel-task-name">Module Integration</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-brown"></td><td class="bar-brown"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">21</td>
+            <td class="excel-task-name">Unit Testing</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-brown"></td><td class="bar-brown"></td><td class="bar-brown"></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">22</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">23</td>
+            <td class="excel-task-name">System Testing</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-brown"></td><td class="bar-brown"></td><td class="bar-brown"></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">24</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+          <!-- Deployment & Documentation (Red) -->
+          <tr>
+            <td class="excel-row-num">25</td>
+            <td class="excel-task-name">Cloud Deployment</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-red"></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">26</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">27</td>
+            <td class="excel-task-name">Documentation</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-red"></td><td class="bar-red"></td><td class="bar-red"></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">28</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+          <!-- Closure (Purple / Blue) -->
+          <tr>
+            <td class="excel-row-num">29</td>
+            <td class="excel-task-name">Final Review</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-purple"></td><td></td><td></td><td></td>
+          </tr>
+          <tr><td class="excel-row-num">30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td class="excel-row-num">31</td>
+            <td class="excel-task-name">Presentation & Handover</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="bar-purple"></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Excel Color Legend -->
+    <div class="legend-row">
+      <div class="legend-item"><div class="color-box" style="background:#18181b;"></div><span>Planning & Requirements</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#1d4ed8;"></div><span>System Design & Modeling</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#166534;"></div><span>Core Feature Modules (Mod 1-4)</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#92400e;"></div><span>Integration & Testing</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#dc2626;"></div><span>Deployment & Documentation</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#4338ca;"></div><span>Final Review & Handover</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function copyAllMarkdown() {
+    const mdText = `# CAREERPILOT AI – PROJECT REFERENCES
+
+## 1. RISK REGISTER – CAREERPILOT AI
+| Risk | Probability | Impact | Mitigation Plan |
+| :--- | :---: | :---: | :--- |
+| **1. Cold-start & inaccurate match** | High | High | Enforce onboarding requirement of 3 baseline skills and use hybrid keyword/vector cosine matching fallbacks. |
+| **2. Skill evidence fabrication or broken links** | Medium | High | Implement automated repo regex checks, certificate domain whitelisting, and mandatory checkpoint quiz validation. |
+| **3. Client-side latency & radar visualizer lag** | Medium | Medium | Debounce filter inputs, optimize vector computations with async routines, and cache precomputed job match scores. |
+| **4. Authentication & data security vulnerabilities** | Medium | High | Use secure token validation, password hashing, input sanitization, and role-based access control (Student / Recruiter). |
+| **5. Assessment test fatigue or drop-off** | Medium | Medium | Structure assessments into bite-sized 5-question micro-quizzes with real-time auto-save and progress indicators. |
+
+---
+
+## 2. GANTT CHART – CAREERPILOT AI
+| Activities | W1 | W2 | W3 | W4 | W5 | W6 | W7 | W8 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Requirement Analysis | 🟦 | 🟦 | | | | | | |
+| System Design | | 🟦 | 🟦 | | | | | |
+| AI Matching Engine & Backend | | | 🟦 | 🟦 | 🟦 | | | |
+| Web Application & Dashboard | | | 🟦 | 🟦 | 🟦 | 🟦 | | |
+| Skills Trust & Assessment Module | | | | 🟦 | 🟦 | 🟦 | | |
+| Testing | | | | | | 🟦 | 🟦 | |
+| Bug Fixing | | | | | | | 🟦 | |
+| Deployment | | | | | | | | 🟦 |
+| Documentation | | | | | | 🟦 | 🟦 | 🟦 |
+`;
+    navigator.clipboard.writeText(mdText).then(() => {
+      alert("✅ Markdown copied to clipboard!");
+    }).catch(err => {
+      console.error(err);
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Title>CareerPilot AI - Risk Register</Title>
+  <Subject>Experiment No. 03 - Risk Analysis &amp; Mitigation Planning</Subject>
+  <Author>Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, Sidharth K.A</Author>
+  <Created>2026-08-01T09:00:00Z</Created>
+  <Company>CareerPilot AI Project Team</Company>
+ </DocumentProperties>
+ <Styles>
+  <!-- Base Normal Style -->
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#1E293B"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+
+  <!-- Title Style -->
+  <Style ss:ID="TitleStyle">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="16" ss:Bold="1" ss:Color="#0F172A"/>
+  </Style>
+
+  <!-- Subtitle Meta Style -->
+  <Style ss:ID="MetaStyle">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#475569"/>
+  </Style>
+
+  <!-- Table Header Style -->
+  <Style ss:ID="HeaderStyle">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#0F172A"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#0F172A" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Section Divider Style -->
+  <Style ss:ID="SectionHeader">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#94A3B8"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10.5" ss:Bold="1" ss:Color="#0F172A"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Regular Data Cell Left -->
+  <Style ss:ID="DataLeft">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#334155"/>
+  </Style>
+
+  <!-- Regular Data Cell Center -->
+  <Style ss:ID="DataCenter">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Color="#334155"/>
+  </Style>
+
+  <!-- Numeric / Rating Style -->
+  <Style ss:ID="RatingNum">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Bold="1" ss:Color="#0F172A"/>
+   <NumberFormat ss:Format="0"/>
+  </Style>
+
+  <!-- Risk Level: Critical / High -->
+  <Style ss:ID="LevelHigh">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FCA5A5"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FCA5A5"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FCA5A5"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FCA5A5"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Bold="1" ss:Color="#991B1B"/>
+   <Interior ss:Color="#FEE2E2" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Risk Level: Medium -->
+  <Style ss:ID="LevelMedium">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FDE68A"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FDE68A"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FDE68A"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#FDE68A"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Bold="1" ss:Color="#92400E"/>
+   <Interior ss:Color="#FEF3C7" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Risk Level: Low -->
+  <Style ss:ID="LevelLow">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#A7F3D0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#A7F3D0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#A7F3D0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#A7F3D0"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9.5" ss:Bold="1" ss:Color="#065F46"/>
+   <Interior ss:Color="#D1FAE5" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Status Monitored / In Progress -->
+  <Style ss:ID="StatusTag">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Bold="1" ss:Color="#1E293B"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+
+  <!-- Matrix Header & Cells -->
+  <Style ss:ID="MatrixHeader">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="9" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#334155" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="MatrixCell">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="8.5" ss:Color="#334155"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+ </Styles>
+
+ <!-- ========================================================= -->
+ <!-- WORKSHEET 1: RISK REGISTER                                -->
+ <!-- ========================================================= -->
+ <Worksheet ss:Name="Risk_Register">
+  <Table ss:DefaultRowHeight="22">
+   <!-- Column Widths -->
+   <Column ss:Width="60"/>   <!-- Risk ID -->
+   <Column ss:Width="130"/>  <!-- Category -->
+   <Column ss:Width="220"/>  <!-- Risk Description -->
+   <Column ss:Width="160"/>  <!-- Impact Area -->
+   <Column ss:Width="70"/>   <!-- Probability -->
+   <Column ss:Width="65"/>   <!-- Impact -->
+   <Column ss:Width="75"/>   <!-- Risk Score -->
+   <Column ss:Width="95"/>   <!-- Risk Level -->
+   <Column ss:Width="250"/>  <!-- Mitigation Strategy -->
+   <Column ss:Width="210"/>  <!-- Contingency Plan -->
+   <Column ss:Width="125"/>  <!-- Risk Owner -->
+   <Column ss:Width="90"/>   <!-- Status -->
+
+   <!-- Row 1: Title -->
+   <Row ss:Height="28">
+    <Cell ss:MergeAcross="11" ss:StyleID="TitleStyle">
+     <Data ss:Type="String">CareerPilot AI – Project Risk Register &amp; Mitigation Matrix</Data>
+    </Cell>
+   </Row>
+
+   <!-- Row 2: Subtitle Metadata -->
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="11" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Project: Placement Intelligence &amp; Career Readiness Platform | Experiment No.: 03 | Date: 01/08/2026</Data>
+    </Cell>
+   </Row>
+
+   <!-- Row 3: Team Members Meta -->
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="11" ss:StyleID="MetaStyle">
+     <Data ss:Type="String">Prepared By: Abel Mathew Bose, K.M. Meenakshi, Sen Shaji, Sidharth K.A | Formula: Risk Score = Probability (1-5) x Impact (1-5)</Data>
+    </Cell>
+   </Row>
+   <Row ss:Height="10"/>
+
+   <!-- Row 5: Column Headers -->
+   <Row ss:Height="28">
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk ID</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk Category</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk Description / Event</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Impact Area</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Probability (P: 1-5)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Impact (I: 1-5)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk Score (P x I)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk Level</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Mitigation Strategy (Preventative Plan)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Contingency Plan (Action if Triggered)</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Risk Owner</Data></Cell>
+    <Cell ss:StyleID="HeaderStyle"><Data ss:Type="String">Status</Data></Cell>
+   </Row>
+
+   <!-- RISK 1: AI Engine / Cold Start -->
+   <Row ss:Height="56">
+    <Cell ss:StyleID="DataCenter"><Data ss:Type="String">R-01</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Technical / AI Engine</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Cold-Start &amp; Inaccurate Match: Candidates with sparse or unverified initial skill entries receive zero or irrelevant job recommendations from the cosine radar engine.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Opportunity Radar Accuracy &amp; Candidate Trust</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">4</Data></Cell>
+    <!-- Risk Score Formula: RC[-2]*RC[-1] -->
+    <Cell ss:StyleID="RatingNum" ss:Formula="=RC[-2]*RC[-1]"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="LevelHigh"><Data ss:Type="String">Critical (16)</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Enforce onboarding requirement of at least 3 baseline skills; implement hybrid matching combining domain taxonomy keywords with vector cosine embeddings.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Fallback to role-based exploratory recommendations and trigger missing evidence popups highlighting required skills.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Abel Mathew Bose</Data></Cell>
+    <Cell ss:StyleID="StatusTag"><Data ss:Type="String">In Mitigation</Data></Cell>
+   </Row>
+
+   <!-- RISK 2: Data Integrity / Verification -->
+   <Row ss:Height="56">
+    <Cell ss:StyleID="DataCenter"><Data ss:Type="String">R-02</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Data Integrity &amp; Trust</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Profile Evidence Fabrication: Candidates submit non-functional GitHub repositories, broken certificate URLs, or falsified project proofs to inflate their Trust Score.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Skill Trust Index Credibility &amp; Recruiter Confidence</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="RatingNum" ss:Formula="=RC[-2]*RC[-1]"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="LevelHigh"><Data ss:Type="String">High (15)</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Implement automated repository regex validation, certificate domain whitelisting, and require checkpoint aptitude/technical quizzes before awarding Verified badges.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Flag suspicious evidence with 'Missing Proof' badges; restrict recruiter pipeline visibility to only authenticated, verified credentials.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Sidharth K.A</Data></Cell>
+    <Cell ss:StyleID="StatusTag"><Data ss:Type="String">Monitored</Data></Cell>
+   </Row>
+
+   <!-- RISK 3: System Performance / Latency -->
+   <Row ss:Height="56">
+    <Cell ss:StyleID="DataCenter"><Data ss:Type="String">R-03</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Performance &amp; Scalability</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Client-Side Latency &amp; UI Freezing: Intensive vector calculations and animated radar sweeps cause browser lag and sluggish assessment timer counters on mobile devices.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Assessment Test Flow &amp; User Experience</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="RatingNum" ss:Formula="=RC[-2]*RC[-1]"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="LevelMedium"><Data ss:Type="String">Medium (9)</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Debounce radar filter triggers; optimize DOM manipulation; offload vector math into lightweight asynchronous routines; cache precomputed opportunity scores.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Disable radar sweep animations automatically on low-spec client devices; paginate opportunities list into chunks of 10 items.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Sen Shaji</Data></Cell>
+    <Cell ss:StyleID="StatusTag"><Data ss:Type="String">Mitigated</Data></Cell>
+   </Row>
+
+   <!-- RISK 4: Schedule / Scope Creep -->
+   <Row ss:Height="56">
+    <Cell ss:StyleID="DataCenter"><Data ss:Type="String">R-04</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Schedule &amp; Milestones</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Scope Creep Across Dual Portals: Simultaneous feature expansion across Student Readiness dashboards and Recruiter Shortlisting leads to milestone slippage.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Project Deadlines &amp; Sprint Deliverables</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="RatingNum" ss:Formula="=RC[-2]*RC[-1]"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="LevelHigh"><Data ss:Type="String">High (12)</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Establish strict milestone boundaries (Phase 1-3 Student Core focus, Phase 4-5 Matching &amp; Trust); isolate recruiter workflows into secondary sprint cycles.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Freeze new non-essential UI features; shift team pairing to unblock critical path assessment and opportunity radar tasks.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="StatusTag"><Data ss:Type="String">Monitored</Data></Cell>
+   </Row>
+
+   <!-- RISK 5: User Engagement / Assessment Drop-off -->
+   <Row ss:Height="56">
+    <Cell ss:StyleID="DataCenter"><Data ss:Type="String">R-05</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">User Adoption &amp; Retention</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Assessment Test Fatigue: Candidates drop off mid-way through rigorous multi-question timed aptitude assessments, leaving readiness profiles incomplete.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Placement Conversion &amp; Platform Engagement</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="RatingNum"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="RatingNum" ss:Formula="=RC[-2]*RC[-1]"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="LevelHigh"><Data ss:Type="String">High (12)</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Structure assessments into bite-sized 5-question micro-checkpoints; implement real-time progress bars, motivational streak counters, and instant readiness unlocks.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">Save quiz progress automatically in localStorage; dispatch non-intrusive reminder alerts guiding users to resume incomplete checkpoints.</Data></Cell>
+    <Cell ss:StyleID="DataLeft"><Data ss:Type="String">K.M. Meenakshi</Data></Cell>
+    <Cell ss:StyleID="StatusTag"><Data ss:Type="String">In Mitigation</Data></Cell>
+   </Row>
+
+   <Row ss:Height="12"/>
+
+   <!-- RISK MATRIX SUMMARY GUIDE -->
+   <Row ss:Height="24">
+    <Cell ss:MergeAcross="11" ss:StyleID="SectionHeader">
+     <Data ss:Type="String">Risk Assessment Reference Matrix &amp; Severity Classification (5 x 5 Scale)</Data>
+    </Cell>
+   </Row>
+
+   <Row ss:Height="20">
+    <Cell ss:MergeAcross="2" ss:StyleID="MatrixHeader"><Data ss:Type="String">Risk Score Range (P x I)</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="MatrixHeader"><Data ss:Type="String">Severity Classification</Data></Cell>
+    <Cell ss:MergeAcross="4" ss:StyleID="MatrixHeader"><Data ss:Type="String">Action Required &amp; Governance</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="MatrixHeader"><Data ss:Type="String">CareerPilot AI Identified Risks</Data></Cell>
+   </Row>
+
+   <Row ss:Height="22">
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelHigh"><Data ss:Type="String">Score: 16 – 25</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelHigh"><Data ss:Type="String">Critical Risk</Data></Cell>
+    <Cell ss:MergeAcross="4" ss:StyleID="DataLeft"><Data ss:Type="String">Immediate executive action required; active mitigation and daily review.</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="DataCenter"><Data ss:Type="String">R-01 (Score: 16)</Data></Cell>
+   </Row>
+
+   <Row ss:Height="22">
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelHigh"><Data ss:Type="String">Score: 10 – 15</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelHigh"><Data ss:Type="String">High Risk</Data></Cell>
+    <Cell ss:MergeAcross="4" ss:StyleID="DataLeft"><Data ss:Type="String">Aggressive mitigation strategy required; weekly sprint tracking and owner assignment.</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="DataCenter"><Data ss:Type="String">R-02 (15), R-04 (12), R-05 (12)</Data></Cell>
+   </Row>
+
+   <Row ss:Height="22">
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelMedium"><Data ss:Type="String">Score: 5 – 9</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelMedium"><Data ss:Type="String">Medium Risk</Data></Cell>
+    <Cell ss:MergeAcross="4" ss:StyleID="DataLeft"><Data ss:Type="String">Proactive monitoring and standard controls; review during milestone check-ins.</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="DataCenter"><Data ss:Type="String">R-03 (Score: 9)</Data></Cell>
+   </Row>
+
+   <Row ss:Height="22">
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelLow"><Data ss:Type="String">Score: 1 – 4</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="LevelLow"><Data ss:Type="String">Low Risk</Data></Cell>
+    <Cell ss:MergeAcross="4" ss:StyleID="DataLeft"><Data ss:Type="String">Acceptable tolerance level; periodic reassessment if project parameters change.</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:StyleID="DataCenter"><Data ss:Type="String">None above threshold</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
